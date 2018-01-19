@@ -4,7 +4,7 @@ class Form extends Component {
   constructor(props){
     super(props);
     this.state = {
-      params: {
+      user: {
         name: '',
         email: '',
         country: '',
@@ -19,26 +19,24 @@ class Form extends Component {
     console.log(event.target.name);
     switch (event.target.name) {
       case 'name':
-        this.state.params.name = event.target.value;
+        this.state.user.name = event.target.value;
         break;
       case 'email':
-        this.state.params.email = event.target.value;
+        this.state.user.email = event.target.value;
         break;
       case 'country':
-        this.state.params.country = event.target.value;
+        this.state.user.country = event.target.value;
         break;
     }
     
     this.setState({
-      value: this.state.params
+      value: this.state.user
     });
   }
   
   handleChangeRadio(event) {
-    this.state.params.gender = event.target.value;
-    
     this.setState({
-      value: this.state.params
+      gender: event.target.value
     });
   }  
   
@@ -53,11 +51,11 @@ class Form extends Component {
           <label>
             Name:
           </label>
-          <input type="text" name="name" value={ this.state.params.name } onChange={ this.handleChange } />
+          <input type="text" name="name" value={ this.state.user.name } onChange={ this.handleChange } />
           <label>
             Email:
           </label>
-          <input type="text" name="email" value={ this.state.params.email } onChange={ this.handleChange } />
+          <input type="text" name="email" value={ this.state.user.email } onChange={ this.handleChange } />
           <label>
             Country:
           </label>
@@ -69,7 +67,9 @@ class Form extends Component {
           <label>
             Gender:
           </label>
+          Male
           <input type="radio" name="gender" value="male" checked={ this.state.gender === "male" } onChange={ this.handleChangeRadio } />
+          Female
           <input type="radio" name="gender" value="female" checked={ this.state.gender === "female" } onChange={ this.handleChangeRadio } />
         </form>
       </div>
